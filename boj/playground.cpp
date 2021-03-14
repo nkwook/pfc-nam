@@ -8,9 +8,9 @@ int main(){
     L.push_back('b');
     L.push_back('c');
     auto t=L.begin();
-    for(int i=0;i<20;i++){
+    for(int i=0;i<3;i++){
         cout << *t << i;
-        t=next(t);
+        t=L.erase(t);
   
         
         
