@@ -71,10 +71,8 @@ int main()
                     }
                     else if (stk.top() == 1)
                     {
-                        // cout << "dsfadsfadf\n";
                         stk.pop();
                         stk.push(3);
-                        // cout << stk.top() << '\n';
                         c='a';
 
                     }
@@ -134,7 +132,13 @@ int main()
     if(stk.empty() || stk.top()==0 || stk.top()==1){
         cout << 0;
     } else{
-        cout << stk.top();
+        int result=stk.top();
+        stk.pop();
+        if(!stk.empty()){
+            cout << 0;
+        }else{
+            cout << result;
+        }
 
     }
 }
