@@ -6,6 +6,12 @@ using namespace std;
 #define X first
 #define Y second
 
+/* 
+    Cautions
+    Needs to take care of all possible letters/strings
+    When man is on board, or fire cant reach all area
+
+*/
 
 int main(){
 
