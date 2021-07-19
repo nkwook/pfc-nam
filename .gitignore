@@ -1,7 +1,7 @@
 *
 !*.cpp
 !/boj/
-
+!/scpc/
 
 # Prerequisites
 *.d
