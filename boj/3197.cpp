@@ -24,13 +24,13 @@ vector<pair<int, int> > LV;
 int vis2 [1501][1501] ;
 int r, c;
 
-int check(){
+int check(int d){
 
-    for(int i=0;i<r;i++){
-        for(int j=0;j<c;j++){
-            vis2[i][j]=0;
-        }
-    }
+    // for(int i=0;i<r;i++){
+    //     for(int j=0;j<c;j++){
+    //         vis2[i][j]=0;
+    //     }
+    // }
     // for()
     Q.push(make_pair(LV[0].first, LV[0].second));
 
@@ -44,7 +44,7 @@ int check(){
             int ny=y+dy[dir];
             // cout << nx <<" " << ny << "  " << "45\n";
 
-            if(nx<0 || nx>=r || ny<0 || ny>=c || vis2[nx][ny]) continue;
+            if(nx<0 || nx>=r || ny<0 || ny>=c || vis2[nx][ny]==d) continue;
             if(lake[nx][ny]=='X') continue;
             
             if(nx==LV[1].first && ny==LV[1].second){
@@ -52,7 +52,7 @@ int check(){
             }
 
 
-            vis2[nx][ny]=1;
+            vis2[nx][ny]=d;
             Q.push(make_pair(nx, ny));
         }
     }
@@ -115,7 +115,7 @@ int main(){
     // cout << NQ.size();
     int days=0;
     while(true){
-        if(check()){
+        if(check(days)){
             cout << days ;
             return 0;
         }
