@@ -51,6 +51,7 @@ void backtrack(int k){
     }
     // }
     backtrack(n); // 다 continue 되었을 때.
+    //flag 넣어주는게 맞긴하지
     return ;
 }
 
