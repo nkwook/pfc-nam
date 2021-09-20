@@ -7,6 +7,7 @@ int used[10];
 
 
 void backtrack(int k){
+    cout << k <<'\n';
     if(k==m){   
         for(int i=0;i<m;i++){
             cout << arr[i] << " ";
