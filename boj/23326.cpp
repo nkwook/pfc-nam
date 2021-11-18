@@ -10,7 +10,7 @@ int category;
 int diff(int s, int p)
 {
     if (p > s)
-        return n-p+s;
+        return n - p + s;
     else
         return s - p;
 }
@@ -19,7 +19,7 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+
     cin >> n >> q;
 
     for (int i = 0; i < n; i++)
@@ -48,19 +48,20 @@ int main()
         {
             int i;
             cin >> i;
-            auto it = a.find(i-1);
+            auto it = a.find(i - 1);
             if (it != a.end())
             {
                 a.erase(it);
             }
             else
             {
-                a.insert(i-1);
+                a.insert(i - 1);
             }
         }
         else if (category == 2)
         {
             int x;
+
             cin >> x;
             position = (position + x) % n;
         }
@@ -68,16 +69,16 @@ int main()
         {
             if (a.empty())
             {
-                cout << -1 <<'\n';
+                cout << -1 << '\n';
                 continue;
             }
             auto spot = a.lower_bound(position);
             // cout << *spot <<'\n';
-            if(spot==a.end() ){
-                spot=a.begin();
-            }            
-            cout << diff(*spot,position)  << '\n';
+            if (spot == a.end())
+            {
+                spot = a.begin();
+            }
+            cout << diff(*spot, position) << '\n';
         }
     }
 }
-
