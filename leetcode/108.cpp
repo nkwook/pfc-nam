@@ -2,15 +2,15 @@
 using namespace std;
 #include <vector>
 
-// struct TreeNode
-// {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
 class Solution
 {
@@ -42,11 +42,11 @@ public:
     }
 };
 
-// int main()
-// {
-//     Solution s;
-//     vector<int> v{-10, -3, 0, 5, 9};
-//     TreeNode* r=s.sortedArrayToBST(v);
-//     // for(auto rr: r){}
-//         // cout << rr <<" ";
-// }
+int main()
+{
+    Solution s;
+    vector<int> v{-10, -3, 0, 5, 9};
+    TreeNode* r=s.sortedArrayToBST(v);
+    // for(auto rr: r){}
+        // cout << rr <<" ";
+}
