@@ -3,7 +3,9 @@ using namespace std;
 #include <list>
 #include <string>
 
-
+// 그대로 스트링으로 하는것이 더 효율적 
+// 불필요한 자료구조와 알고리즘을 사용하지 않는것이 더 좋음
+// 불필요한 이중 조건문 등도 유의할 것
 
 class Solution {
 public:
