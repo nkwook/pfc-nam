@@ -4,6 +4,8 @@ using namespace std;
 #include <tuple>
 #include <utility>
 
+// can reduce time complexity via graph remodeling.
+
 int n;
 priority_queue < tuple< int, int, int > ,
     vector<tuple<int, int, int > >,
@@ -15,10 +17,16 @@ int main(){
     cin >> n;
     int w, p;
     int min=0;
+    int minCost=100000;
+    int minCostNum;
     for(int i=0;i<n;i++){
         cin >> w;
         min+=w;
         adj[i][i]=w;
+        if(minCost>w){
+            minCost=w;
+            minCostNum=i;
+        }
     }   
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
@@ -29,7 +37,7 @@ int main(){
     }
     
 
-    for(int startingPoint=0;startingPoint<n;startingPoint++){
+    // for(int startingPoint=0;startingPoint<n;startingPoint++){
 
         for(int i=0;i<n;i++){
             chk[i]=false;
@@ -39,13 +47,13 @@ int main(){
         }
 
         for(int i=0;i<n;i++){
-            pq.push(make_tuple(adj[startingPoint][i], startingPoint, i ));
+            pq.push(make_tuple(adj[minCostNum][i], minCostNum, i ));
             pq.push(make_tuple( adj[i][i], i, i));
         }
 
         int cnt=0;
-        int cost=adj[startingPoint][startingPoint];
-        chk[startingPoint]=true;
+        int cost=adj[minCostNum][minCostNum];
+        chk[minCostNum]=true;
 
         int a, b, c;
         while(cnt<n-1){
@@ -67,7 +75,7 @@ int main(){
             min=cost;
         }
 
-    }
+    // }
     cout << min;
     return 0;
 
