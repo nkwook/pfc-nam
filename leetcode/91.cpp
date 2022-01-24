@@ -1,4 +1,7 @@
 class Solution {
+
+    // string can be always converted to char value, which is able tp cmp with int by subtracting '0'
+    // also in dp, we can consider which datas are useless, then reduce space complexity
 public:
     int numDecodings(string s) {
         // 1817~
