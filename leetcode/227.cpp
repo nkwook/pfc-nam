@@ -7,7 +7,7 @@ public:
         // use isdigit, isspace function
         // calculator problems: stacks are good because we need prior info of numbers. 
         // calculation can be proceeded when theres both operator, operand
-        
+        // Also pleaz remember way to subtract zero... mㅡㅡㅡㅡㅡ
         stack<int> stk;
         int tmp=0;
         char op='+';
