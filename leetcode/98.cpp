@@ -10,6 +10,9 @@ public:
     // and put as reference param, update!
     // also its important to decide execution of function and 
     // use conditionaly returning.... without multipling vars.
+
+    //++) by considering boundary cond at first, we can reduce conds.......
+
     bool inorder(TreeNode* node, TreeNode * &prev){
         if(node->left!=nullptr) {
             if(!inorder(node->left, prev)) return false;
@@ -23,6 +26,24 @@ public:
         return true;
     }
 };
+
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        TreeNode* prev=nullptr;
+        return inorder(root,  prev);
+    }
+    
+    bool inorder(TreeNode* node, TreeNode * &prev){
+        if(node==nullptr) return true;
+        if(!inorder(node->left, prev)) return false;
+        
+        if(prev!=nullptr && node->val <= prev->val) return false;
+        prev=node;
+        return inorder(node->right, prev);
+    }
+};
+
 
 class Solution {
 public:
