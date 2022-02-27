@@ -36,37 +36,25 @@ public:
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        queue<int> Q;
-        vector<bool> vis(s.length(), false);
+        vector<bool> dp(s.length()+1, false);
         unordered_set<string> dictSet;
         
-            for(string w: wordDict){
-                dictSet.insert(w);
-            }
-        
-            for(string w: wordDict){
-                if(dictSet.find(s.substr(0, w.length()))!=dictSet.end()){  
-                    if(w.length()==s.length()) return true;
-                   Q.push(w.length());
-               }
-            }     
-            if(Q.empty()) return false;
-            
-            while(!Q.empty()){
-                int t=Q.front();
-                Q.pop();
-                
-                if(vis[t]) continue;
-                for(string w: wordDict){
-                    if(dictSet.find(s.substr(t, w.length()))!=dictSet.end()){
-                        if(t+w.length()==s.length()) return true;
-                        Q.push(t+w.length());
+        for(string w: wordDict){
+            dictSet.insert(w);
+        }
+
+        for(int i=1;i<=s.size();i++){
+            for(int j=i-1;j>=0;j--){
+                if(dp[j]){
+                    if(dict.find(s.substr(j, i-j))!=dict.end()){
+                        dp[i]=true;
+                        break;
                     }
                 }
-                vis[t]=true;
-                
             }
-            return false;
+        }        
+        
+        return dp[s.size()];
         
     }
 };
