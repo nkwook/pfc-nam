@@ -1,8 +1,10 @@
 *
 !*.cpp
+!*.py
 !*/
 !/boj/
 !/scpc/
+!/foobar/
 # !/scpc/*/2nd/*
 
 
