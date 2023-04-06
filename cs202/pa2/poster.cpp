@@ -3,34 +3,68 @@ using namespace std;
 #include <map>
 #include <set>
 #include<vector>
-int n, w;
-int posters[2001][4];
-
-map<int, set<tuple<int, int, bool>>> posterMap;
-multiset<pair<int, bool>> yCoordinates;
+long long n, w;
+map<int, vector<tuple<long long, long long, bool>>> xCoordinates;
+multiset<pair<long long, bool>> yCoordinates;
 
 int main(){
-    int x1, x2, y1, y2;
+    long long x1, x2, y1, y2;
     cin >> n;
-    for( int i=0;i<n;i++){
+    for( long long i=0;i<n;i++){
         cin >> x1 >> x2 >> y1 >> y2;
-        posterMap[x1].insert({y1, y2, true});
-        posterMap[x2].insert({y1, y2, false});
+        xCoordinates[x1].push_back({y1, y2, true});
+        xCoordinates[x2].push_back({y1, y2, false});
     }   
 
-    for (auto poster: posterMap){
-        int pos=poster.first;
-        for(auto it: poster.second){
-            y1=get<0>(it);
-            y2=get<1>(it);
-            bool start=get<2>(it);
-            yCoordinates.insert({y1, true});
-            yCoordinates.insert({y2, false});
+    long long preX=xCoordinates.begin()->first;
+
+    long long result=0;
+    for (auto xInfo: xCoordinates){
+
+        long long x=xInfo.first;
+        long long l=x-preX;
+        long long preY=yCoordinates.begin()->first;
+        long long cnt=0;
+        long long occupiedNumber=0;
+        long long newOccupiedNumber=occupiedNumber;
+        for (auto it: yCoordinates){
+            long long y=it.first;
+            bool isStartY= it.second;
+
+            if(isStartY){
+                newOccupiedNumber++;
+            }else{
+                newOccupiedNumber--;
+            }
+
+            if(occupiedNumber>0 && newOccupiedNumber==0){
+                cnt+= y-preY;
+            }else if(occupiedNumber==0 && newOccupiedNumber>0){
+                preY=y;
+
+            }
+            occupiedNumber=newOccupiedNumber;
+        }
+        result+=l*cnt;
+        preX=x;
+
+        for (auto xTuple: xInfo.second){
+            long long y1=get<0>(xTuple);
+            long long y2=get<1>(xTuple);
+            bool isStartX=get<2>(xTuple);
+            if(isStartX){
+                yCoordinates.insert({y1, true});
+                yCoordinates.insert({y2, false});
+            }
+            else{
+                auto it1=yCoordinates.find({y1, true});
+                auto it2=yCoordinates.find({y2, false});
+                yCoordinates.erase(it1);
+                yCoordinates.erase(it2);
+            }
         }
     }
-
-
-
+    cout << result;
 
     return 0;
 }
