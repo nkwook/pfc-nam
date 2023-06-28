@@ -10,9 +10,10 @@ static void WA(const char *str)
 }
 int query(std::vector<int> E)
 {
+
     q_count++;
-    if (q_count > 20000)
-        WA("query limit exceeded.");
+    // if (q_count > 20000)
+    //     WA("query limit exceeded.");
     std::vector<int> buf(n + 5);
     for (int i = 0; i < E.size(); i++)
     {

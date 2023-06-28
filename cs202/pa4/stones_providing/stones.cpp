@@ -7,7 +7,6 @@ using namespace std;
 
 void stones(int N)
 {
-
     std::vector<int> v1, v2;
     // 1 나왔던 것들 + 정답인 것들 다 배제 
     bool heavyStones[N+1];
